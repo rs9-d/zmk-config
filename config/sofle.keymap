@@ -39,7 +39,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "LAYER_SWITCHING";
             #binding-cells = <0>;
-            bindings = <&mo 3>, <&mo 4>;
+            bindings = <&mo 0>, <&mo 3>, <&mo 4>;
         };
     };
 
