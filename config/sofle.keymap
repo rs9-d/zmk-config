@@ -80,7 +80,7 @@
 
         design {
             bindings = <
-&kp ESCAPE                                   &lyr_tgl 0 A    &lyr_tgl 2 A      &trans       &trans        &trans                              &trans  &trans  &trans  &trans  &trans  &trans
+&kp ESCAPE                                   &lyr_tgl 1 A    &lyr_tgl 2 A      &trans       &trans        &trans                              &trans  &trans  &trans  &trans  &trans  &trans
 &trans                                       &trans          &kp W             &kp I        &mt P T       &kp BACKSPACE                       &trans  &trans  &trans  &trans  &trans  &trans
 &mt LC(LS(RIGHT_BRACKET)) LC(RIGHT_BRACKET)  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp SPACE    &kp LEFT_ALT  &kp A                               &trans  &trans  &trans  &trans  &trans  &trans
 &mt LS(LC(LEFT_BRACKET)) LC(LEFT_BRACKET)    &kp Z           &mt LC(X) X       &mt LC(C) C  &paste        &trans         &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
@@ -92,7 +92,7 @@
 
         gaming {
             bindings = <
-&kp ESC    &lyr_tgl 1 NUMBER_1  &lyr_tgl 0 NUMBER_2  &kp N3  &kp NUMBER_4  &kp N5                       &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
+&kp ESC    &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3  &kp NUMBER_4  &kp N5                       &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
 &kp TAB    &kp Q                &kp W                &kp E   &kp R         &kp T                        &kp Y   &kp U   &kp I      &kp O    &kp P     &trans
 &kp CAPS   &kp A                &kp S                &kp D   &kp F         &kp G                        &kp H   &kp J   &kp K      &kp L    &kp SEMI  &trans
 &kp LSHFT  &kp Z                &kp X                &kp C   &kp V         &kp B   &trans       &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
