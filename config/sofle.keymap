@@ -35,11 +35,20 @@
             bindings = <&mt LC(V) V>, <&kp LC(LA(LS(V)))>;
         };
 
-        layer_switching: layer_switching {
+        lyr_swch: lyr_swch {
             compatible = "zmk,behavior-tap-dance";
-            label = "LAYER_SWITCHING";
+            label = "LYR_SWCH";
             #binding-cells = <0>;
             bindings = <&mo 6>, <&mo 3>, <&mo 4>;
+        };
+
+        lyr_tgl: lyr_tgl {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LYR_TGL";
+            bindings = <&tog>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
         };
     };
 
@@ -57,25 +66,25 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE  &lt 1 NUMBER_1  &lt 2 NUMBER_2  &kp N3    &kp NUMBER_4  &kp N5                           &kp N6  &kp N7     &kp N8     &kp N9    &kp N0         &kp DELETE
-&kp ESC    &kp Q           &kp W           &kp F     &kp P         &kp G                            &kp J   &kp L      &kp U      &kp Y     &kp SEMICOLON  &kp BSPC
-&kp TAB    &kp A           &kp R           &kp S     &kp T         &kp D                            &kp H   &kp N      &kp E      &kp I     &kp O          &kp SQT
-&kp LSHFT  &kp Z           &kp X           &kp C     &kp V         &kp B   &kp C_MUTE    &none      &kp K   &kp M      &kp COMMA  &kp DOT   &kp FSLH       &kp RSHFT
-                           &kp LGUI        &kp LALT  &kp LCTRL     &mo 3   &kp RET       &kp SPACE  &mo 4   &kp RCTRL  &kp RALT   &kp RGUI
+&kp GRAVE  &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3    &kp NUMBER_4  &kp N5                           &kp N6  &kp N7     &kp N8     &kp N9    &kp N0         &kp DELETE
+&kp ESC    &kp Q                &kp W                &kp F     &kp P         &kp G                            &kp J   &kp L      &kp U      &kp Y     &kp SEMICOLON  &kp BSPC
+&kp TAB    &kp A                &kp R                &kp S     &kp T         &kp D                            &kp H   &kp N      &kp E      &kp I     &kp O          &kp SQT
+&kp LSHFT  &kp Z                &kp X                &kp C     &kp V         &kp B   &kp C_MUTE    &none      &kp K   &kp M      &kp COMMA  &kp DOT   &kp FSLH       &kp RSHFT
+                                &kp LGUI             &kp LALT  &kp LCTRL     &mo 3   &kp RET       &kp SPACE  &mo 4   &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings =
                 <&inc_dec_kp LC(LS(Z)) LC(Z)>,
-                <&inc_dec_kp PG_UP PG_DN>;
+                <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
         };
 
         design {
             bindings = <
-&kp ESCAPE                                   &lt 0 A         &lt 2 A           &trans       &trans        &trans                                 &trans  &trans  &trans  &trans  &trans  &trans
-&trans                                       &trans          &kp W             &kp I        &mt P T       &kp BACKSPACE                          &trans  &trans  &trans  &trans  &trans  &trans
-&mt LC(LS(RIGHT_BRACKET)) LC(RIGHT_BRACKET)  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp SPACE    &kp LEFT_ALT  &kp A                                  &trans  &trans  &trans  &trans  &trans  &trans
-&mt LS(LC(LEFT_BRACKET)) LC(LEFT_BRACKET)    &kp Z           &mt LC(X) X       &mt LC(C) C  &paste        &trans            &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                                             &trans            &trans       &trans        &layer_switching  &kp ENTER    &trans  &trans  &trans  &trans  &trans
+&kp ESCAPE                                   &lyr_tgl 0 A    &lyr_tgl 2 A      &trans       &trans        &trans                              &trans  &trans  &trans  &trans  &trans  &trans
+&trans                                       &trans          &kp W             &kp I        &mt P T       &kp BACKSPACE                       &trans  &trans  &trans  &trans  &trans  &trans
+&mt LC(LS(RIGHT_BRACKET)) LC(RIGHT_BRACKET)  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp SPACE    &kp LEFT_ALT  &kp A                               &trans  &trans  &trans  &trans  &trans  &trans
+&mt LS(LC(LEFT_BRACKET)) LC(LEFT_BRACKET)    &kp Z           &mt LC(X) X       &mt LC(C) C  &paste        &trans         &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                                             &trans            &trans       &trans        &lyr_swch      &kp ENTER    &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LC(LS(Z)) LC(Z)>;
@@ -83,11 +92,11 @@
 
         gaming {
             bindings = <
-&kp ESC    &lt 1 NUMBER_1  &lt 0 NUMBER_2  &kp N3  &kp NUMBER_4  &kp N5                       &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
-&kp TAB    &kp Q           &kp W           &kp E   &kp R         &kp T                        &kp Y   &kp U   &kp I      &kp O    &kp P     &trans
-&kp CAPS   &kp A           &kp S           &kp D   &kp F         &kp G                        &kp H   &kp J   &kp K      &kp L    &kp SEMI  &trans
-&kp LSHFT  &kp Z           &kp X           &kp C   &kp V         &kp B   &trans       &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
-                           &trans          &trans  &kp SPACE     &mo 6   &kp ENTER    &trans  &none   &trans  &trans     &trans
+&kp ESC    &lyr_tgl 1 NUMBER_1  &lyr_tgl 0 NUMBER_2  &kp N3  &kp NUMBER_4  &kp N5                       &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
+&kp TAB    &kp Q                &kp W                &kp E   &kp R         &kp T                        &kp Y   &kp U   &kp I      &kp O    &kp P     &trans
+&kp CAPS   &kp A                &kp S                &kp D   &kp F         &kp G                        &kp H   &kp J   &kp K      &kp L    &kp SEMI  &trans
+&kp LSHFT  &kp Z                &kp X                &kp C   &kp V         &kp B   &trans       &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
+                                &trans               &trans  &kp SPACE     &mo 6   &kp ENTER    &trans  &none   &trans  &trans     &trans
             >;
         };
 
