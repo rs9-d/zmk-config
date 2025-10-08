@@ -68,11 +68,11 @@
 
         design {
             bindings = <
-&trans  &trans          &trans            &trans     &trans        &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans            &trans     &kp V         &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp SPACE  &kp LEFT_ALT  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans            &trans     &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans            &trans     &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans          &trans            &trans       &trans        &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans          &trans            &trans       &kp V         &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp SPACE    &kp LEFT_ALT  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans          &trans            &mt LC(C) C  &mt LC(V) V   &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans            &trans       &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
