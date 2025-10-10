@@ -22,7 +22,7 @@
         compatible = "zmk,conditional-layers";
 
         adjust_layer {
-            if-layers = <3 4>;
+            if-layers = <4 3>;
             then-layer = <5>;
         };
     };
@@ -39,7 +39,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "LYR_SWCH";
             #binding-cells = <0>;
-            bindings = <&mo 6>, <&mo 3>, <&mo 4>;
+            bindings = <&lyrpik>, <&mo 4>;
         };
 
         lyr_tgl: lyr_tgl {
@@ -50,13 +50,22 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        lyrpik: lyrpik {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LYRPIK";
+            bindings = <&mo 6>, <&mo 3>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
         base {
-            display-name = "default";
+            display-name = "base";
 
             // ------------------------------------------------------------------------------------------------------------
             // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |       |
@@ -66,11 +75,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE  &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3    &kp NUMBER_4  &kp N5                           &kp N6  &kp N7     &kp N8     &kp N9    &kp N0         &kp DELETE
-&kp ESC    &kp Q                &kp W                &kp F     &kp P         &kp G                            &kp J   &kp L      &kp U      &kp Y     &kp SEMICOLON  &kp BSPC
-&kp TAB    &kp A                &kp R                &kp S     &kp T         &kp D                            &kp H   &kp N      &kp E      &kp I     &kp O          &kp SQT
-&kp LSHFT  &kp Z                &kp X                &kp C     &kp V         &kp B   &kp C_MUTE    &none      &kp K   &kp M      &kp COMMA  &kp DOT   &kp FSLH       &kp RSHFT
-                                &kp LGUI             &kp LALT  &kp LCTRL     &mo 3   &kp RET       &kp SPACE  &mo 4   &kp RCTRL  &kp RALT   &kp RGUI
+&kp GRAVE  &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3    &kp NUMBER_4  &kp N5                        &kp N6  &kp N7     &kp N8     &kp N9    &kp N0         &kp DELETE
+&kp ESC    &kp Q                &kp W                &kp F     &kp P         &kp G                         &kp J   &kp L      &kp U      &kp Y     &kp SEMICOLON  &kp BSPC
+&kp TAB    &kp A                &kp R                &kp S     &kp T         &kp D                         &kp H   &kp N      &kp E      &kp I     &kp O          &kp SQT
+&kp LSHFT  &kp Z                &kp X                &kp C     &kp V         &kp B   &none      &none      &kp K   &kp M      &kp COMMA  &kp DOT   &kp FSLH       &kp RSHFT
+                                &kp LGUI             &kp LALT  &kp LCTRL     &mo 4   &kp RET    &kp SPACE  &mo 3   &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings =
@@ -80,14 +89,15 @@
 
         design {
             bindings = <
-&kp ESCAPE                                   &lyr_tgl 1 A    &lyr_tgl 2 A      &trans       &trans        &trans                              &trans  &trans  &trans  &trans  &trans  &trans
-&trans                                       &trans          &kp W             &kp I        &mt P T       &kp BACKSPACE                       &trans  &trans  &trans  &trans  &trans  &trans
-&mt LC(LS(RIGHT_BRACKET)) LC(RIGHT_BRACKET)  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp SPACE    &kp LEFT_ALT  &kp A                               &trans  &trans  &trans  &trans  &trans  &trans
-&mt LS(LC(LEFT_BRACKET)) LC(LEFT_BRACKET)    &kp Z           &mt LC(X) X       &mt LC(C) C  &paste        &trans         &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                                             &trans            &trans       &trans        &lyr_swch      &kp ENTER    &trans  &trans  &trans  &trans  &trans
+&trans                                       &lyr_tgl 1 A    &lyr_tgl 2 A      &trans        &trans     &trans                              &trans  &trans  &trans  &trans  &trans  &trans
+&kp ESCAPE                                   &trans          &kp I             &mt LC(S) W   &mt P T    &kp BACKSPACE                       &trans  &trans  &trans  &trans  &trans  &trans
+&mt LC(LS(RIGHT_BRACKET)) LC(RIGHT_BRACKET)  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp SPACE  &mt LC(A) A                         &trans  &trans  &trans  &trans  &trans  &trans
+&mt LS(LC(LEFT_BRACKET)) LC(LEFT_BRACKET)    &kp Z           &mt LC(X) X       &mt LC(C) C   &paste     &trans         &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                                             &trans            &trans        &trans     &lyr_swch      &kp ENTER    &trans  &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(LS(Z)) LC(Z)>;
+            sensor-bindings = <&inc_dec_kp LC(Z) LC(LS(Z))>;
+            label = "design";
         };
 
         gaming {
@@ -98,10 +108,33 @@
 &kp LSHFT  &kp Z                &kp X                &kp C   &kp V         &kp B   &trans       &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
                                 &trans               &trans  &kp SPACE     &mo 6   &kp ENTER    &trans  &none   &trans  &trans     &trans
             >;
+
+            label = "gaming";
         };
 
         lower_layer {
-            display-name = "lower";
+            display-name = "nav";
+
+            // ------------------------------------------------------------------------------------------------------------
+            // | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
+            // |       | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
+            // |       | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
+            // |       | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
+            //                |      |       |       |      |      |  |      |      |      |       |      |
+
+            bindings = <
+&kp LC(LS(LA(NUMBER_1)))  &kp LC(LS(LA(NUMBER_2)))  &trans          &trans          &trans     &trans                    &trans  &trans    &trans    &trans     &trans  &trans
+&kp LA(LS(LC(NUMBER_3)))  &kp LS(LA(LC(NUMBER_4)))  &trans          &kp UP_ARROW    &trans     &trans                    &trans  &trans    &kp UP    &trans     &trans  &trans
+&kp LS(LA(LC(N5)))        &kp LS(LA(LC(NUMBER_6)))  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &trans                    &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
+&kp LS(LA(LC(N7)))        &kp LS(LA(LC(N8)))        &trans          &trans          &trans     &trans  &trans    &trans  &trans  &trans    &trans    &trans     &trans  &trans
+                                                    &trans          &trans          &trans     &trans  &trans    &trans  &trans  &trans    &trans    &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp LC(LS(RIGHT_ARROW)) LS(LC(LEFT_ARROW))>;
+        };
+
+        raise_layer {
+            display-name = "num";
 
             // TODO: Some binds are waiting for shifted keycode support.
             // ------------------------------------------------------------------------------------------------------------
@@ -122,27 +155,6 @@
             sensor-bindings = <&inc_dec_kp LS(RIGHT_ARROW) LS(LEFT_ARROW)>;
         };
 
-        raise_layer {
-            display-name = "raise";
-
-            // ------------------------------------------------------------------------------------------------------------
-            // | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
-            // |       | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
-            // |       | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
-            // |       | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
-            //                |      |       |       |      |      |  |      |      |      |       |      |
-
-            bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3         &bt BT_SEL 4                    &trans     &trans    &trans    &trans     &trans   &trans
-&trans      &trans        &trans          &kp UP_ARROW    &trans               &trans                          &kp PG_UP  &trans    &kp UP    &trans     &kp N0   &trans
-&trans      &trans        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT            &kp CLCK                        &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT  &kp DEL  &kp BSPC
-&trans      &trans        &trans          &trans          &mt LC(LA(LS(V))) V  &trans        &trans    &trans  &trans     &trans    &trans    &trans     &trans   &trans
-                          &trans          &trans          &trans               &trans        &trans    &trans  &trans     &trans    &trans    &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp LC(LS(RIGHT_ARROW)) LS(LC(LEFT_ARROW))>;
-        };
-
         adjust_layer {
             // ----------------------------------------------------------------------------------------------------------------------------
             // | BTCLR  |  BT1    |  BT2    |   BT3   |   BT4   |   BT5   |                  |      |      |       |      |       |       |
@@ -153,22 +165,22 @@
 
             display-name = "adjust";
             bindings = <
-&bt BT_CLR         &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4                               &none  &none  &none  &none  &none  &none
-&ext_power EP_TOG  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &rgb_ug RGB_EFF                            &none  &none  &none  &none  &none  &none
-&none              &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &none            &none            &none                                      &none  &none  &none  &none  &none  &none
-&none              &none            &none            &none            &none            &none            &rgb_ug RGB_TOG    &none  &none  &none  &none  &none  &none  &none
-                                    &none            &none            &none            &none            &none              &none  &none  &none  &none  &none
+&bt BT_CLR         &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4                     &none  &none  &none  &none  &none  &none
+&ext_power EP_TOG  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &rgb_ug RGB_EFF                  &none  &none  &none  &none  &none  &none
+&none              &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &none            &none            &none                            &none  &none  &none  &none  &none  &none
+&none              &none            &none            &none            &none            &none            &none    &none  &none  &none  &none  &none  &none  &none
+                                    &none            &none            &none            &none            &none    &none  &none  &none  &none  &none
             >;
         };
 
         base_mo {
-            display-name = "default";
+            display-name = "base";
             bindings = <
-&kp GRAVE  &kp N1  &kp N2    &kp N3    &kp NUMBER_4  &kp N5                           &kp N6  &kp N7     &kp N8     &kp N9    &kp N0         &kp DELETE
-&kp ESC    &kp Q   &kp W     &kp F     &kp P         &kp G                            &kp J   &kp L      &kp U      &kp Y     &kp SEMICOLON  &kp BSPC
-&kp TAB    &kp A   &kp R     &kp S     &kp T         &kp D                            &kp H   &kp N      &kp E      &kp I     &kp O          &kp SQT
-&kp LSHFT  &kp Z   &kp X     &kp C     &kp V         &kp B   &kp C_MUTE    &none      &kp K   &kp M      &kp COMMA  &kp DOT   &kp FSLH       &kp RSHFT
-                   &kp LGUI  &kp LALT  &kp LCTRL     &none   &kp RET       &kp SPACE  &none   &kp RCTRL  &kp RALT   &kp RGUI
+&kp GRAVE  &kp N1  &kp N2    &kp N3    &kp NUMBER_4  &kp N5                        &kp N6  &kp N7     &kp N8     &kp N9    &kp N0         &kp DELETE
+&kp ESC    &kp Q   &kp W     &kp F     &kp P         &kp G                         &kp J   &kp L      &kp U      &kp Y     &kp SEMICOLON  &kp BSPC
+&kp TAB    &kp A   &kp R     &kp S     &kp T         &kp D                         &kp H   &kp N      &kp E      &kp I     &kp O          &kp SQT
+&kp LSHFT  &kp Z   &kp X     &kp C     &kp V         &kp B   &none      &none      &kp K   &kp M      &kp COMMA  &kp DOT   &kp FSLH       &kp RSHFT
+                   &kp LGUI  &kp LALT  &kp LCTRL     &none   &kp RET    &kp SPACE  &none   &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings =
