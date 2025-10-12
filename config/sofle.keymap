@@ -59,6 +59,13 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
+
+        base_swch: base_swch {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BASE_SWCH";
+            #binding-cells = <0>;
+            bindings = <&mo 3>, <&mo 4>;
+        };
     };
 
     keymap {
@@ -75,11 +82,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE  &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3    &kp NUMBER_4  &kp N5                        &kp N6  &kp N7     &kp N8     &kp N9    &kp N0         &kp DELETE
-&kp ESC    &kp Q                &kp W                &kp F     &kp P         &kp G                         &kp J   &kp L      &kp U      &kp Y     &kp SEMICOLON  &kp BSPC
-&kp TAB    &kp A                &kp R                &kp S     &kp T         &kp D                         &kp H   &kp N      &kp E      &kp I     &kp O          &kp SQT
-&kp LSHFT  &kp Z                &kp X                &kp C     &kp V         &kp B   &none      &none      &kp K   &kp M      &kp COMMA  &kp DOT   &kp FSLH       &kp RSHFT
-                                &kp LGUI             &kp LALT  &kp LCTRL     &mo 4   &kp RET    &kp SPACE  &mo 3   &kp RCTRL  &kp RALT   &kp RGUI
+&kp GRAVE  &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3    &kp NUMBER_4  &kp N5                            &kp N6      &kp N7     &kp N8     &kp N9    &kp N0         &kp DELETE
+&kp ESC    &kp Q                &kp W                &kp F     &kp P         &kp G                             &kp J       &kp L      &kp U      &kp Y     &kp SEMICOLON  &kp BSPC
+&kp TAB    &kp A                &kp R                &kp S     &kp T         &kp D                             &kp H       &kp N      &kp E      &kp I     &kp O          &kp SQT
+&kp LSHFT  &kp Z                &kp X                &kp C     &kp V         &kp B       &none      &none      &kp K       &kp M      &kp COMMA  &kp DOT   &kp FSLH       &kp RSHFT
+                                &kp LGUI             &kp LALT  &kp LCTRL     &base_swch  &kp RET    &kp SPACE  &base_swch  &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings =
@@ -102,11 +109,11 @@
 
         gaming {
             bindings = <
-&kp ESC    &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3  &kp NUMBER_4  &kp N5                       &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
-&kp TAB    &kp Q                &kp W                &kp E   &kp R         &kp T                        &kp Y   &kp U   &kp I      &kp O    &kp P     &trans
-&kp CAPS   &kp A                &kp S                &kp D   &kp F         &kp G                        &kp H   &kp J   &kp K      &kp L    &kp SEMI  &trans
-&kp LSHFT  &kp Z                &kp X                &kp C   &kp V         &kp B   &trans       &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
-                                &trans               &trans  &kp SPACE     &mo 6   &kp ENTER    &trans  &none   &trans  &trans     &trans
+&kp ESC    &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3     &kp NUMBER_4  &kp N5                       &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
+&kp TAB    &kp Q                &kp W                &kp E      &kp R         &kp T                        &kp Y   &kp U   &kp I      &kp O    &kp P     &trans
+&kp CAPS   &kp A                &kp S                &kp D      &kp F         &kp G                        &kp H   &kp J   &kp K      &kp L    &kp SEMI  &trans
+&kp LSHFT  &kp Z                &kp X                &kp C      &kp V         &kp B   &trans       &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
+                                &trans               &kp LCTRL  &kp SPACE     &mo 6   &kp ENTER    &trans  &none   &trans  &trans     &trans
             >;
 
             label = "gaming";
