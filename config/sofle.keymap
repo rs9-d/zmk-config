@@ -5,10 +5,7 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/rgb.h>
 
 #define BASE 0
 #define LOWER 1
@@ -54,7 +51,7 @@
         lyrpik: lyrpik {
             compatible = "zmk,behavior-mod-morph";
             label = "LYRPIK";
-            bindings = <&mo 6>, <&mo 3>;
+            bindings = <&mo 5>, <&mo 3>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
@@ -109,17 +106,17 @@
 
         gaming {
             bindings = <
-&kp ESC    &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3     &kp NUMBER_4  &kp N5                       &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
-&kp TAB    &kp Q                &kp W                &kp E      &kp R         &kp T                        &kp Y   &kp U   &kp I      &kp O    &kp P     &trans
-&kp CAPS   &kp A                &kp S                &kp D      &kp F         &kp G                        &kp H   &kp J   &kp K      &kp L    &kp SEMI  &trans
-&kp LSHFT  &kp Z                &kp X                &kp C      &kp V         &kp B   &trans       &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
-                                &trans               &kp LCTRL  &kp SPACE     &mo 6   &kp ENTER    &trans  &none   &trans  &trans     &trans
+&kp ESC    &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3     &kp NUMBER_4  &kp N5                          &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
+&kp TAB    &kp Q                &kp W                &kp E      &kp R         &kp T                           &kp Y   &kp U   &kp I      &kp O    &kp P     &trans
+&kp CAPS   &kp A                &kp S                &kp D      &kp F         &kp G                           &kp H   &kp J   &kp K      &kp L    &kp SEMI  &trans
+&kp LSHFT  &kp Z                &kp X                &kp C      &kp V         &kp B      &trans       &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
+                                &trans               &kp LCTRL  &kp SPACE     &lyr_swch  &kp ENTER    &trans  &none   &trans  &trans     &trans
             >;
 
             label = "gaming";
         };
 
-        lower_layer {
+        navigation {
             display-name = "nav";
 
             // ------------------------------------------------------------------------------------------------------------
@@ -130,17 +127,17 @@
             //                |      |       |       |      |      |  |      |      |      |       |      |
 
             bindings = <
-&kp LC(LS(LA(NUMBER_1)))  &kp LC(LS(LA(NUMBER_2)))  &trans          &trans          &trans     &trans                    &trans  &trans    &trans    &trans     &trans  &trans
-&kp LA(LS(LC(NUMBER_3)))  &kp LS(LA(LC(NUMBER_4)))  &trans          &kp UP_ARROW    &trans     &trans                    &trans  &trans    &kp UP    &trans     &trans  &trans
-&kp LS(LA(LC(N5)))        &kp LS(LA(LC(NUMBER_6)))  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &trans                    &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
-&kp LS(LA(LC(N7)))        &kp LS(LA(LC(N8)))        &trans          &trans          &trans     &trans  &trans    &trans  &trans  &trans    &trans    &trans     &trans  &trans
-                                                    &trans          &trans          &trans     &trans  &trans    &trans  &trans  &trans    &trans    &trans
+&kp LC(KP_NUMBER_7)  &kp LC(KP_NUMBER_8)  &trans          &trans          &trans     &trans                    &trans  &trans    &trans    &trans     &trans  &trans
+&kp LC(KP_NUMBER_5)  &kp LC(KP_NUMBER_6)  &trans          &kp UP_ARROW    &trans     &trans                    &trans  &trans    &kp UP    &trans     &trans  &trans
+&kp LC(KP_NUMBER_3)  &kp LC(KP_NUMBER_4)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &trans                    &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
+&kp LC(KP_NUMBER_1)  &kp LC(KP_NUMBER_2)  &trans          &trans          &trans     &trans  &trans    &trans  &trans  &trans    &trans    &trans     &trans  &trans
+                                          &trans          &trans          &trans     &trans  &trans    &trans  &trans  &trans    &trans    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LC(LS(RIGHT_ARROW)) LS(LC(LEFT_ARROW))>;
         };
 
-        raise_layer {
+        numpad {
             display-name = "num";
 
             // TODO: Some binds are waiting for shifted keycode support.
@@ -160,24 +157,6 @@
             >;
 
             sensor-bindings = <&inc_dec_kp LS(RIGHT_ARROW) LS(LEFT_ARROW)>;
-        };
-
-        adjust_layer {
-            // ----------------------------------------------------------------------------------------------------------------------------
-            // | BTCLR  |  BT1    |  BT2    |   BT3   |   BT4   |   BT5   |                  |      |      |       |      |       |       |
-            // | EXTPWR | RGB_HUD | RGB_HUI | RGB_SAD | RGB_SAI | RGB_EFF |                  |      |      |       |      |       |       |
-            // |        | RGB_BRD | RGB_BRI |         |         |         |                  |      |      |       |      |       |       |
-            // |        |         |         |         |         |         | RGB_TOG | |      |      |      |       |      |       |       |
-            //                    |         |         |         |         |         | |      |      |      |       |      |
-
-            display-name = "adjust";
-            bindings = <
-&bt BT_CLR         &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4                     &none  &none  &none  &none  &none  &none
-&ext_power EP_TOG  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &rgb_ug RGB_EFF                  &none  &none  &none  &none  &none  &none
-&none              &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &none            &none            &none                            &none  &none  &none  &none  &none  &none
-&none              &none            &none            &none            &none            &none            &none    &none  &none  &none  &none  &none  &none  &none
-                                    &none            &none            &none            &none            &none    &none  &none  &none  &none  &none
-            >;
         };
 
         base_mo {
