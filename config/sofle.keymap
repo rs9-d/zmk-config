@@ -63,6 +63,15 @@
             #binding-cells = <0>;
             bindings = <&mo 3>, <&mo 4>;
         };
+
+        tilde: tilde {
+            compatible = "zmk,behavior-mod-morph";
+            label = "TILDE";
+            bindings = <&kp E>, <&kp TILDE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
     };
 
     keymap {
@@ -107,7 +116,7 @@
         gaming {
             bindings = <
 &kp ESC    &lyr_tgl 1 NUMBER_1  &lyr_tgl 2 NUMBER_2  &kp N3     &kp NUMBER_4  &kp N5                          &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
-&kp TAB    &kp Q                &kp W                &kp E      &kp R         &kp T                           &kp Y   &kp U   &kp I      &kp O    &kp P     &trans
+&kp TAB    &kp Q                &kp W                &tilde     &kp R         &kp T                           &kp Y   &kp U   &kp I      &kp O    &kp P     &trans
 &kp CAPS   &kp A                &kp S                &kp D      &kp F         &kp G                           &kp H   &kp J   &kp K      &kp L    &kp SEMI  &trans
 &kp LSHFT  &kp Z                &kp X                &kp C      &kp V         &kp B      &trans       &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
                                 &trans               &kp LCTRL  &kp SPACE     &lyr_swch  &kp ENTER    &trans  &none   &trans  &trans     &trans
