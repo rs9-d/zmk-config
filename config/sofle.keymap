@@ -47,6 +47,22 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
+
+        tognotap: tognotap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TOGNOTAP";
+            bindings = <&tog>, <&none>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
+
+        lyr_pk: lyr_pk {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LYR_PK";
+            #binding-cells = <0>;
+            bindings = <&tognotap 1 0>, <&tognotap 2 0>;
+        };
     };
 
     keymap {
@@ -63,11 +79,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE  &mt F1 NUMBER_1  &mt F2 NUMBER_2  &mt F3 NUMBER_3  &mt F4 NUMBER_4  &mt F5 N5                           &mt F6 NUMBER_6  &mt F7 N7  &mt F8 N8  &mt F9 N9  &mt F10 N0     &kp DELETE
-&kp ESC    &kp Q            &kp W            &kp F            &kp P            &kp G                               &kp J            &kp L      &kp U      &kp Y      &kp SEMICOLON  &kp BSPC
-&kp TAB    &kp A            &kp R            &kp S            &kp T            &kp D                               &kp H            &kp N      &kp E      &kp I      &kp O          &kp SQT
-&shft_cap  &kp Z            &kp X            &kp C            &kp V            &kp B         &none      &none      &kp K            &kp M      &kp COMMA  &kp DOT    &kp FSLH       &kp RSHFT
-                            &kp LGUI         &kp LALT         &kp LCTRL        &lyr1or2 2 1  &kp RET    &kp SPACE  &tog 2           &kp RCTRL  &kp RALT   &kp RGUI
+&kp GRAVE  &mt F1 NUMBER_1  &mt F2 NUMBER_2  &mt F3 NUMBER_3  &mt F4 NUMBER_4  &mt F5 N5                        &mt F6 NUMBER_6  &mt F7 N7  &mt F8 N8  &mt F9 N9  &mt F10 N0     &kp DELETE
+&kp ESC    &kp Q            &kp W            &kp F            &kp P            &kp G                            &kp J            &kp L      &kp U      &kp Y      &kp SEMICOLON  &kp BSPC
+&kp TAB    &kp A            &kp R            &kp S            &kp T            &kp D                            &kp H            &kp N      &kp E      &kp I      &kp O          &kp SQT
+&shft_cap  &kp Z            &kp X            &kp C            &kp V            &kp B      &none      &none      &kp K            &kp M      &kp COMMA  &kp DOT    &kp FSLH       &kp RSHFT
+                            &kp LGUI         &kp LALT         &kp LCTRL        &lyr_pk    &kp RET    &kp SPACE  &tog 2           &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings =
