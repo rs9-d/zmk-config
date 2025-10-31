@@ -93,11 +93,11 @@
 
         design {
             bindings = <
-&trans                                       &trans          &trans            &trans        &trans     &trans                              &trans  &trans  &trans  &trans  &trans  &trans
-&kp ESCAPE                                   &trans          &kp I             &mt LC(S) W   &mt P T    &kp BACKSPACE                       &trans  &trans  &trans  &trans  &trans  &trans
-&mt LC(LS(RIGHT_BRACKET)) LC(RIGHT_BRACKET)  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp SPACE  &mt LC(A) A                         &trans  &trans  &trans  &trans  &trans  &trans
-&mt LS(LC(LEFT_BRACKET)) LC(LEFT_BRACKET)    &kp Z           &mt LC(X) X       &mt LC(C) C   &paste     &trans         &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                                             &trans            &tog 4        &tog 3     &to 0          &kp ENTER    &trans  &trans  &trans  &trans  &trans
+&trans                                       &trans               &trans            &trans        &trans     &trans                              &trans  &trans  &trans  &trans  &trans  &trans
+&kp ESCAPE                                   &mt LS(LC(G)) LC(G)  &kp I             &mt LC(S) W   &mt P T    &kp BACKSPACE                       &trans  &trans  &trans  &trans  &trans  &trans
+&mt LC(LS(RIGHT_BRACKET)) LC(RIGHT_BRACKET)  &kp LEFT_SHIFT       &kp LEFT_CONTROL  &kp LEFT_ALT  &kp SPACE  &mt LC(A) A                         &trans  &trans  &trans  &trans  &trans  &trans
+&mt LS(LC(LEFT_BRACKET)) LC(LEFT_BRACKET)    &kp Z                &mt LC(X) X       &mt LC(C) C   &paste     &trans         &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                                                  &trans            &tog 4        &tog 3     &to 0          &kp ENTER    &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LC(Z) LC(LS(Z))>;
