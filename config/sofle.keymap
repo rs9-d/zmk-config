@@ -12,6 +12,8 @@
 #define RAISE 2
 #define ADJUST 3
 
+&mt { flavor = "tap-preferred"; };
+
 / {
     // Activate ADJUST layer by pressing raise and lower
 
@@ -63,6 +65,15 @@
             #binding-cells = <0>;
             bindings = <&tognotap 1 0>, <&tognotap 2 0>;
         };
+
+        lyr_pk2: lyr_pk2 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LYR_PK2";
+            bindings = <&tog 1>, <&tog 2>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
     };
 
     keymap {
@@ -83,7 +94,7 @@
 &kp ESC    &kp Q            &kp W            &kp F            &kp P            &kp G                            &kp J            &kp L      &kp U      &kp Y      &kp SEMICOLON  &kp BSPC
 &kp TAB    &kp A            &kp R            &kp S            &kp T            &kp D                            &kp H            &kp N      &kp E      &kp I      &kp O          &kp SQT
 &shft_cap  &kp Z            &kp X            &kp C            &kp V            &kp B      &none      &none      &kp K            &kp M      &kp COMMA  &kp DOT    &kp FSLH       &kp RSHFT
-                            &kp LGUI         &kp LALT         &kp LCTRL        &lyr_pk    &kp RET    &kp SPACE  &tog 2           &kp RCTRL  &kp RALT   &kp RGUI
+                            &kp LGUI         &kp LALT         &kp LCTRL        &lyr_pk2   &kp RET    &kp SPACE  &tog 2           &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings =
@@ -106,11 +117,11 @@
 
         gaming {
             bindings = <
-&kp ESCAPE  &kp NUMBER_1  &kp NUMBER_2        &kp N3     &kp NUMBER_4  &kp N5                       &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
-&kp TAB     &kp Q         &kp W               &kp E      &kp R         &kp T                        &kp Y   &kp U   &kp I      &kp O    &kp P     &trans
-&kp CAPS    &kp A         &kp S               &kp D      &kp F         &kp G                        &kp H   &kp J   &kp K      &kp L    &kp SEMI  &trans
-&kp LSHFT   &kp Z         &kp X               &kp C      &kp V         &kp B   &trans       &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
-                          &mt TILDE LEFT_WIN  &kp LCTRL  &kp SPACE     &to 0   &kp ENTER    &trans  &none   &trans  &trans     &trans
+&kp ESCAPE  &mt F1 NUMBER_1  &mt F2 NUMBER_2     &mt F3 NUMBER_3  &mt F4 NUMBER_4  &mt F5 N5                       &mt F6 NUMBER_6  &mt F7 N7  &mt F8 N8  &mt F9 N9  &mt F10 N0  &trans
+&kp TAB     &kp Q            &kp W               &kp E            &kp R            &kp T                           &kp Y            &kp U      &kp I      &kp O      &kp P       &trans
+&kp CAPS    &kp A            &kp S               &kp D            &kp F            &kp G                           &kp H            &kp J      &kp K      &kp L      &kp SEMI    &trans
+&kp LSHFT   &kp Z            &kp X               &kp C            &kp V            &kp B         &trans    &trans  &kp N            &kp M      &kp COMMA  &kp DOT    &kp FSLH    &trans
+                             &mt TILDE LEFT_WIN  &kp LCTRL        &kp SPACE        &kp LEFT_ALT  &to 0     &trans  &none            &trans     &trans     &trans
             >;
 
             label = "gaming";
