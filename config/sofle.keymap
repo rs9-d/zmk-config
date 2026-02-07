@@ -12,10 +12,7 @@
 #define RAISE 2
 #define ADJUST 3
 
-&mt {
-    flavor = "tap-preferred";
-    hold-trigger-on-release;
-};
+&mt { hold-trigger-on-release; };
 
 / {
     // Activate ADJUST layer by pressing raise and lower
@@ -120,11 +117,11 @@
 
         gaming {
             bindings = <
-&kp ESCAPE  &mt F1 NUMBER_1  &mt F2 NUMBER_2     &mt F3 NUMBER_3  &mt F4 NUMBER_4  &mt F5 N5                       &mt F6 NUMBER_6  &mt F7 N7  &mt F8 N8  &mt F9 N9  &mt F10 N0  &trans
-&kp TAB     &kp Q            &kp W               &kp E            &kp R            &kp T                           &kp Y            &kp U      &kp I      &kp O      &kp P       &trans
-&kp CAPS    &kp A            &kp S               &kp D            &kp F            &kp G                           &kp H            &kp J      &kp K      &kp L      &kp SEMI    &trans
-&kp LSHFT   &kp Z            &kp X               &kp C            &kp V            &kp B         &trans    &trans  &kp N            &kp M      &kp COMMA  &kp DOT    &kp FSLH    &trans
-                             &mt TILDE LEFT_WIN  &kp LCTRL        &kp SPACE        &kp LEFT_ALT  &to 0     &trans  &none            &trans     &trans     &trans
+&kp ESCAPE  &kp NUMBER_1  &kp NUMBER_2        &kp NUMBER_3  &kp NUMBER_4  &kp N5                          &kp NUMBER_6  &kp N7  &kp N8     &kp N9   &kp N0    &trans
+&kp TAB     &kp Q         &kp W               &kp E         &kp R         &kp T                           &kp Y         &kp U   &kp I      &kp O    &kp P     &trans
+&kp CAPS    &kp A         &kp S               &kp D         &kp F         &kp G                           &kp H         &kp J   &kp K      &kp L    &kp SEMI  &trans
+&kp LSHFT   &kp Z         &kp X               &kp C         &kp V         &kp B         &trans    &trans  &kp N         &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
+                          &mt TILDE LEFT_WIN  &kp LCTRL     &kp SPACE     &kp LEFT_ALT  &to 0     &trans  &none         &trans  &trans     &trans
             >;
 
             label = "gaming";
