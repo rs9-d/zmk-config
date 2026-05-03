@@ -27,4 +27,3 @@ include:
     shield: settings_reset
   - board: xiao_ble//zmk
     shield: sofle2_dongle prospector_adapter
-    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
