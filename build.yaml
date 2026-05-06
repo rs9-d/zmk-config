@@ -25,5 +25,5 @@ include:
     shield: sofle_right
   - board: nice_nano_v2
     shield: settings_reset
-  - board: xiao_ble//zmk
+  - board: seeeduino_xiao_ble
     shield: sofle2_dongle prospector_adapter
